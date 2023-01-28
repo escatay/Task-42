@@ -1,17 +1,37 @@
-import polynomial
+#imported libraries
 import numpy as np
 import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+import plotly.express as px
+#imported files for regression
+import polynomial
+#add other files here
 
-def regress(data, basis_func, deg = None):
-    # importing the same data, store in X and Y
+
+def polyreg(data, deg = None):
+    
+    """Calls the polynomial basis function.
+    
+    Parameters
+    ----------
+    data : 2d array
+           the sample points.
+    deg : int
+        Degree of the fitting polynomial.
+    
+    Returns
+    -------
+    y : 1d array
+        Polynomial evaluated for each cell of x.
+    """        
     X = data[0, :]
     Y = data[1, :]
-    model, ax = plt.subplots(nrows = 1, ncols = 1)
-    if basis_func == "polynomial":
-        y= polynomial.poly_value(X,Y,deg)
-        ax.plot(np.linspace(1,10,100), y, label = ("polynomial regression, degree = ", deg))
-    else:
-        plt.text(x = 0.25, y = 0.5, s = "Not implemented yet")
+    y= polynomial.poly_value(X,Y,deg)
+    return y
+
+#add other basis functions here
         
+
+
         
         
