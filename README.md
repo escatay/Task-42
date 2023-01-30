@@ -30,3 +30,10 @@ Basis functions are a powerful tool in modeling and understanding complex phenom
     - dropdown menu?
     - dataset?
     - .py for regression, RMSE
+    
+    
+    
+References:
+The Chemical Statistican, https://chemicalstatistician.wordpress.com/tag/gaussian-basis-function-models/, last accessed: 30.01.23
+Machine Learning Mastery, A Gentle Introduction To Sigmoid Function - MachineLearningMastery.com, last accessed 30.01.23
+Pages.mtu.edu, https://pages.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/B-spline/bspline-basis.html, last accessed 30.01.23
