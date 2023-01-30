@@ -11,12 +11,18 @@ Basis functions are a powerful tool in modeling and understanding complex phenom
        
 - Basic Functions: 
     - how do they look? #Kim
+    -     Images in the 10.presentation    
     - when to use? #Kim
+    - 
     - implement in .py #Judith
         - Polynomial
+        - Are used for modelling simple relationships between predictors             and targets.
         - Gaussian
+        - The Gaussian basis function uses the Gaussian probability               density function as a basis function. Because it can model               non-linear relationships very well it is for example used for           supervised learning problems with non-linear relationships               between predictor and target. It is a local basis function,              which is useful because of its faster computation.
         - Sigmoidal
+        - The Sigmoidal basis function is also used for non-linear                 relationships in the date. An example of its field of use is             in the learning of neuronal networks and the discovery of               functions which suit well for the resolving in supervised               learning.
         - Periodical
+        - The Periodical basis function is used for phenomena that                  happen periodically. For example: oscillations, clustering or            time series analysis.
         - (B-Splines)
         - (Cubic Spline)
     
