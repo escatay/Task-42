@@ -11,6 +11,8 @@ from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import make_pipeline
+from scipy.interpolate import BSpline, splrep, splev
+
 
 
 #add other files here
@@ -31,11 +33,15 @@ def sin_f(data):
     return y 
 
 #polynomial
-def polyreg(data, deg = None):   
+def polyreg(data, deg = None):
     X = data[0, :]
     Y = data[1, :]
-    y= polynomial.poly_value(X,Y,deg)
-    return y
+    #y= polynomial.poly_value(X,Y,deg)
+    xfit = np.linspace(0, 10, 100)
+    poly_model = make_pipeline(PolynomialFeatures(deg),LinearRegression())
+    poly_model.fit(X[:, np.newaxis], Y)
+    yfit = poly_model.predict(xfit[:, np.newaxis])
+    return yfit
  
 #gausian
 class GaussianFeatures(BaseEstimator, TransformerMixin):
@@ -59,10 +65,10 @@ class GaussianFeatures(BaseEstimator, TransformerMixin):
     def transform(self, X):
         return self._gauss_basis(X[:, :, np.newaxis], self.centers_,
                                  self.width_, axis=1)
-def gaus(data):
+def gaus(data, deg = 4):
     X = data[0, :]
     Y = data[1, :]
-    gauss_model = make_pipeline(GaussianFeatures(4),LinearRegression())
+    gauss_model = make_pipeline(GaussianFeatures(deg),LinearRegression())
     gauss_model.fit(X[:, np.newaxis], Y)
     yfit = gauss_model.predict(x[:, np.newaxis])
     return yfit
@@ -78,5 +84,41 @@ def sig(data):
     x = np.linspace(0,10,100)
     y = sigmoidal(x, sig[0],sig[1])
     return y 
-        
+
+from scipy.interpolate import BSpline, splrep, splev
+def bspl(data):
+    X,Y = data
+    X, Y = zip(*sorted(zip(X, Y)))
+    np.random.seed(0)
+    n = 300
+    ts = X
+    ys = Y
+    # Fit
+    n_interior_knots = 3
+    qs = np.linspace(0, 1, n_interior_knots+2)[1:-1]
+    knots = np.quantile(ts, qs)
+    tck = splrep(ts, ys, t=knots, k=3)
+    ys_smooth = splev(ts, tck)
+    return ys_smooth
+#cubic spline
+from patsy import dmatrix
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
+
+def cspl(data):
+    X,Y = data
+    X, Y = zip(*sorted(zip(X, Y)))
+
+    # Generating cubic spline with 3 knots at 25, 40 and 60
+    transformed_x = dmatrix("bs(train, knots=(1,3,5), degree=3, include_intercept=False)", {"train": X},return_type='dataframe')
+
+    # Fitting Generalised linear model on transformed dataset
+    fit1 = sm.GLM(Y, transformed_x).fit()
+
+    # Predictions on both splines
+    xp = np.linspace(0,10,100)
+    # Make some predictions
+    pred1 = fit1.predict(dmatrix("bs(xp, knots=(1,3,5), include_intercept=False)", {"xp": xp}, return_type='dataframe'))
+
+    return pred1
         
