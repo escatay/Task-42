@@ -6,7 +6,8 @@ import numpy as np
 import regression
 
 class Model42:
-    
+ 
+
     #initialize model with given dataframe
     def __init__ (self, data):
         """Creates an instance of the model the scattered sample points and one for each basis function.
@@ -38,8 +39,34 @@ class Model42:
                 visible = False
             )
         )
-        #add other basis functions in the same fashion here
+        #periodical
+        self.fig.add_trace(
+            go.Scatter(
+                x = np.linspace(0,10,100),
+                y = regression.sin_f(self.data),
+                name = 'periodical',
+                visible = False
+            )
+        )
+        #gausian
+        self.fig.add_trace(
+            go.Scatter(
+                x = np.linspace(0,10,100),
+                y = regression.gaus(self.data),
+                name = 'gaussian',
+                visible = False
+            )
+        )
         
+         #sigmoidial
+        self.fig.add_trace(
+            go.Scatter(
+                x = np.linspace(0,10,100),
+                y = regression.sig(self.data),
+                name = 'sigmoidal',
+                visible = False
+            )
+        )
         
         #the dropdown menu
         self.fig.update_layout(
@@ -53,27 +80,27 @@ class Model42:
                             method = "update"
                         ),
                         dict(
-                            args=[{'visible': [True, True]}], #add traces for other basis functions
+                            args=[{'visible': [True, True, False, False, False]}], #add traces for other basis functions
                             label = "polynomial",
                             method = "update"
                         ),
                         dict(
-                            args = [{'visible': [True, False]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, True, False, False]}], #add traces for other basis functions
                             label = "gaussian",
                             method = "update"
                         ),
                         dict(
-                            args = [{'visible': [True, False]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, False, True, False]}], #add traces for other basis functions
                             label = "sigmoidal",
                             method = "update"
                         ),
                         dict (
-                            args = [{'visible': [True, False]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, False, False, True]}], #add traces for other basis functions
                             label = "periodical",
                             method = "update"
                         ),
                         dict (
-                            args = [{'visible': [True, True]}], #add traces for other basis functions
+                            args = [{'visible': [True, True, True, True, True]}], #add traces for other basis functions
                             label = "all",
                             method = "update"
                         ),
