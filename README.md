@@ -32,7 +32,9 @@ source:
         - Periodical
         - The Periodical basis function is used for phenomena that                  happen periodically. For example: oscillations, clustering or            time series analysis.
         - (B-Splines)
+          B-splines can be used to approximate splines over a set of               points. They are also used to approximate nonlinear functions             and non-periodic data. They can f.e. be used for computer                 aided geometry design programs.
         - (Cubic Spline)
+          A cubic spline is a piecewise cubic function presented as a               smooth curve with a given set of points. So it is used for               situations where smooth curves have to be modeled. It is an               efficient methods for data interpolation and is used by f.e.             engineering for curve fitting.
     
 - for the model: #Lea
     - dropdown menu?
@@ -45,3 +47,7 @@ References:
 The Chemical Statistican, https://chemicalstatistician.wordpress.com/tag/gaussian-basis-function-models/, last accessed: 30.01.23
 Machine Learning Mastery, A Gentle Introduction To Sigmoid Function - MachineLearningMastery.com, last accessed 30.01.23
 Pages.mtu.edu, https://pages.mtu.edu/~shene/COURSES/cs3621/NOTES/spline/B-spline/bspline-basis.html, last accessed 30.01.23
+Skript by Antonia WItttmers and Maria Gensel, Modellierung von Kurven und Flächen mittels B-Splines, http://www.inf.fu-berlin.de/lehre/SS06/Computergraphik/skript/vorlesung4.pdf , last accessed 01.02.23
+Computational Nuclear Engineering and Radiological Science Using Python Chapter 10 by Ryan G McClarren(2018), https://www.sciencedirect.com/science/article/pii/B9780128122532000121, last accessed 01.02.23
+Cubic spline interpolation for petroleum engineering data, ResearchGate(2014) https://www.researchgate.net/publication/287245396_Cubic_spline_interpolation_for_petroleum_engineering_da, last accessed 01.02.23
+
