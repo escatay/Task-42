@@ -48,7 +48,7 @@ class Model42:
                 visible = False
             )
         )
-        #gausian
+        #gaussian
         self.fig.add_trace(
             go.Scatter(
                 x = np.linspace(0,10,100),
@@ -58,12 +58,32 @@ class Model42:
             )
         )
         
-         #sigmoidial
+        #sigmoidial
         self.fig.add_trace(
             go.Scatter(
                 x = np.linspace(0,10,100),
                 y = regression.sig(self.data),
                 name = 'sigmoidal',
+                visible = False
+            )
+        )
+        
+        #B-splines
+        self.fig.add_trace(
+            go.Scatter(
+                x = np.linspace(0,10,100),
+                y = regression.bspl(self.data),
+                name = 'B-splines',
+                visible = False
+            )
+        )
+        
+        #Cubic splines
+        self.fig.add_trace(
+            go.Scatter(
+                x = np.linspace(0,10,100),
+                y = regression.cspl(self.data),
+                name = 'Cubic splines',
                 visible = False
             )
         )
@@ -80,27 +100,37 @@ class Model42:
                             method = "update"
                         ),
                         dict(
-                            args=[{'visible': [True, True, False, False, False]}], #add traces for other basis functions
+                            args=[{'visible': [True, True, False, False, False, False, False]}], #add traces for other basis functions
                             label = "polynomial",
                             method = "update"
                         ),
                         dict(
-                            args = [{'visible': [True, False, True, False, False]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, True, False, False, False, False]}], #add traces for other basis functions
                             label = "gaussian",
                             method = "update"
                         ),
                         dict(
-                            args = [{'visible': [True, False, False, True, False]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, False, True, False, False, False]}], #add traces for other basis functions
                             label = "sigmoidal",
                             method = "update"
                         ),
                         dict (
-                            args = [{'visible': [True, False, False, False, True]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, False, False, True, False, False]}], #add traces for other basis functions
                             label = "periodical",
                             method = "update"
                         ),
                         dict (
-                            args = [{'visible': [True, True, True, True, True]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, False, False, False, True, False]}], #add traces for other basis functions
+                            label = "B-splines",
+                            method = "update"
+                        ),
+                        dict (
+                            args = [{'visible': [True, False, False, False, False, False, True]}], #add traces for other basis functions
+                            label = "Cubic Splines",
+                            method = "update"
+                        ),
+                        dict (
+                            args = [{'visible': [True, True, True, True, True, True, True]}], #add traces for other basis functions
                             label = "all",
                             method = "update"
                         ),

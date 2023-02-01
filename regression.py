@@ -12,6 +12,10 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 from sklearn.pipeline import make_pipeline
 from scipy.interpolate import BSpline, splrep, splev
+#imports for cubic splines
+from patsy import dmatrix
+import statsmodels.api as sm
+import statsmodels.formula.api as smf
 
 
 
@@ -101,9 +105,6 @@ def bspl(data):
     ys_smooth = splev(ts, tck)
     return ys_smooth
 #cubic spline
-from patsy import dmatrix
-import statsmodels.api as sm
-import statsmodels.formula.api as smf
 
 def cspl(data):
     X,Y = data
