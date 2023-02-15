@@ -10,14 +10,20 @@
 Slide 1:Basis functions are a powerful tool in modeling and understanding complex phenomena. They allow us to represent a function as a linear combination of simpler functions, making it easier to estimate and understand. 
 
 Slide 2: There are several types of basis functions, each with its own unique properties and advantages. Polynomial, Gaussian, Sigmoidal, Periodical, B-Splines, and Cubic Spline are some examples of commonly used basis functions. 
+
+Slide 3:
 Polynomial basis functions are used for modelling simple relationships between predictors and targets.
-Gaussian basis functions use the Gaussian probability density function as a basis function. Because they can model non-linear relationships very well they are for example used for supervised learning problems with non-linear relationships between predictor and target. They are local basis functions, which is useful because of its faster computation.
-Sigmoidal basis functions are also used for non-linear relationships in the data. An example of its field of use is in the learning of neuronal networks and the discovery of  functions which suit well for the resolving in supervised learning.
 Periodical basis functions are used for phenomena that happen periodically. For example: oscillations, clustering or time series analysis.
+
+Slide 4:
+Sigmoidal basis functions are also used for non-linear relationships in the data. An example of its field of use is in the learning of neuronal networks and the discovery of  functions which suit well for the resolving in supervised learning.
+Gaussian basis functions use the Gaussian probability density function as a basis function. Because they can model non-linear relationships very well they are for example used for supervised learning problems with non-linear relationships between predictor and target. They are local basis functions, which is useful because of its faster computation.
+
+Slide 5:
 B-splines can be used to approximate splines over a set of points. They are also used to approximate nonlinear functions and non-periodic data. They can f.e. be used for computer aided geometry design programs.
 Cubic splines are piecewise cubic functions presented as a smooth curve with a given set of points. So it is used for situations where smooth curves have to be modeled. It is an efficient method for data interpolation and is used by f.e. engineering for curve fitting.
  
-Slide 3: As we increase the number of parameters, our model becomes more accurate, but there is a risk of overfitting if we use too many. Here you can see a graphical example for underfitting, a good fit to the data and overfitting .This is why the process of model selection is crucial and involves finding the appropriate choice of basis functions and the appropriate value for the regularization parameter λ. Our goal is to find the ‘best’ model, which is the one that generalizes well on future data.
+Slide 6: As we increase the number of parameters, our model becomes more accurate, but there is a risk of overfitting if we use too many. Here you can see a graphical example for underfitting, a good fit to the data and overfitting .This is why the process of model selection is crucial and involves finding the appropriate choice of basis functions and the appropriate value for the regularization parameter λ. Our goal is to find the ‘best’ model, which is the one that generalizes well on future data.
 To evaluate the performance of our model, we use metrics such as root mean-squared error, Akaike Information Criterion (AIC), or Bayesian Information Criterion (BIC) on a test dataset. This allows us to determine the model with the lowest generalization error, which is the performance of the model on unseen data. Here you can see how rmse indicates how well the chosen basis function approximates the underlying function. Additionally, to prevent overfitting, it is important to divide our training dataset into three parts: training, validation, and test datasets. Using the training dataset to train our model, the validation dataset for model selection and the test dataset for final evaluation, we can ensure that our model has the lowest generalization error.
 
 source:
