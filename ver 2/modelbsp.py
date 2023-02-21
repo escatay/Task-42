@@ -36,8 +36,8 @@ class Model42:
         self.fig = go.Figure(data = self.scatter)
         #set polynomial degree to 4 for testing, guess it's obsolete and can go with the better regression function lol
         
-        #create the different regression plots:  
-        #polynomial
+        #create the different regression number of knots:  
+        #1
         self.fig.add_trace(
             go.Scatter(
                 x = np.linspace(0,10,100),
@@ -47,7 +47,7 @@ class Model42:
             )
         )
         
-        #periodical
+        #5
         self.fig.add_trace(
             go.Scatter(
                 x = np.linspace(0,10,100),
@@ -56,7 +56,7 @@ class Model42:
                 visible = True
             )
         )
-        #gausian
+        #10
         self.fig.add_trace(
             go.Scatter(
                  x = np.linspace(0,10,100),
@@ -66,7 +66,7 @@ class Model42:
             )
         )
         
-        #gausian
+        #20
         self.fig.add_trace(
             go.Scatter(
                  x = np.linspace(0,10,100),
@@ -86,27 +86,27 @@ class Model42:
                 dict(
                     buttons = list([
                         dict(
-                            args=[{'visible': [True, True, True, True, True]}],#this line decides which curves are visible and has to be changed to the number of traces added before. 1st is the data points, the others are the regression curves in the order they were added
+                            args=[{'visible': [True, True, True, True, True]}],
                             label = "all ",
                             method = "update"
                         ),
                         dict(
-                            args=[{'visible': [True, True, False, False, False]}], #add traces for other basis functions
+                            args=[{'visible': [True, True, False, False, False]}], 
                             label = "degree 3",
                             method = "update"
                         ),
                         dict(
-                            args = [{'visible': [True, False, True, False, False]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, True, False, False]}], 
                             label = "degree 4",
                             method = "update"
                         ),
                         dict(
-                            args = [{'visible': [True, False, False, True, False]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, False, True, False]}], 
                             label = "degree 5",
                             method = "update"
                         ),
                         dict (
-                            args = [{'visible': [True, False, False, False, True]}], #add traces for other basis functions
+                            args = [{'visible': [True, False, False, False, True]}], 
                             label = "degree 6",
                             method = "update"
                         ),

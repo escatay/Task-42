@@ -34,11 +34,28 @@ class Model42:
         data = zip(X,Y)
         self.scatter = px.scatter(data, x=self.data[0, :], y=self.data[1, :])
         self.fig = go.Figure(data = self.scatter)
-        #set polynomial degree to 4 for testing, guess it's obsolete and can go with the better regression function lol
-        self.deg = 4
+
         
-        #create the different regression plots:  
-        #polynomial
+        #create the different regression plots for each degree:  
+        #1
+        self.fig.add_trace(
+            go.Scatter(
+                x = np.linspace(0,10,100),
+                y = regression.gaus(self.data, deg = 3),
+                name = 'degree 3 -> RMSE: ' +"%.2f" % self.mse(yhat = regression.gaus(self.data, deg = 1), y = Y),
+                visible = True
+            )
+        )
+        #2
+        self.fig.add_trace(
+            go.Scatter(
+                x = np.linspace(0,10,100),
+                y = regression.gaus(self.data, deg = 3),
+                name = 'degree 3 -> RMSE: ' +"%.2f" % self.mse(yhat = regression.gaus(self.data, deg = 2), y = Y),
+                visible = True
+            )
+        )
+        #3
         self.fig.add_trace(
             go.Scatter(
                 x = np.linspace(0,10,100),
@@ -47,7 +64,7 @@ class Model42:
                 visible = True
             )
         )
-        #periodical
+        #4
         self.fig.add_trace(
             go.Scatter(
                 x = np.linspace(0,10,100),
@@ -56,7 +73,7 @@ class Model42:
                 visible = True
             )
         )
-        #gausian
+        #5
         self.fig.add_trace(
             go.Scatter(
                  x = np.linspace(0,10,100),
@@ -66,7 +83,7 @@ class Model42:
             )
         )
         
-        #gausian
+        #6
         self.fig.add_trace(
             go.Scatter(
                  x = np.linspace(0,10,100),
