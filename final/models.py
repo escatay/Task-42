@@ -52,8 +52,7 @@ class Model42:
             for i in range(len(self.fig.data)):
                 step = dict(
                     method="update",
-                    args=[{"visible": [False] * len(self.fig.data)},
-                          {"title": "degree: " + str(i)}],  # layout attribute
+                    args=[{"visible": [False] * len(self.fig.data)}]
                 )
                 step["args"][0]["visible"][0] = True 
                 step["args"][0]["visible"][i] = True  # Toggle i'th trace to "visible"
@@ -70,8 +69,8 @@ class Model42:
                 sliders=sliders,
                 title=go.layout.Title(text="Polynomial Basis Functions", x = 0.5),
                 annotations=[
-                    dict(text="Formula: ϕ(x)=xj", showarrow= False,
-                         x = 1, y = 1.2, yref = "paper", align = "right"),
+                    dict(text=r'$$\phi(x) = \begin{bmatrix} x^j \end{bmatrix}_{j=0}^d$$', showarrow= False, font=dict(size=18),
+                         x = 0, y = 1.2, yref = "paper", align = "left"),
                     
                 ],
             )
@@ -95,8 +94,7 @@ class Model42:
             for i in range(len(self.fig.data)):
                 step = dict(
                     method="update",
-                    args=[{"visible": [False] * len(self.fig.data)},
-                          {"title": "degree: " + str(i)}],  # layout attribute
+                    args=[{"visible": [False] * len(self.fig.data)}]
                 )
                 step["args"][0]["visible"][0] = True 
                 step["args"][0]["visible"][i] = True  # Toggle i'th trace to "visible"
@@ -113,9 +111,8 @@ class Model42:
                 sliders=sliders,
                 title=go.layout.Title(text="Gaussian Basis Functions", x = 0.5),
                 annotations=[
-                    dict(text="Formula: ϕj(x)=exp{−(x−μj)22s2}", showarrow= False,
-                         x = 1, y = 1.2, yref = "paper", align = "right"),
-                    
+                    dict(text=r'$\phi(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right)$', showarrow= False, font=dict(size=18),
+                         x = 1, y = 1.2, yref = "paper", align = "left"),
                 ],
             )
 
@@ -139,8 +136,7 @@ class Model42:
             for i in range(len(self.fig.data)):
                 step = dict(
                     method="update",
-                    args=[{"visible": [False] * len(self.fig.data)},
-                          {"title": "degree: " + str(i)}],  # layout attribute
+                    args=[{"visible": [False] * len(self.fig.data)}]
                 )
                 step["args"][0]["visible"][0] = True 
                 step["args"][0]["visible"][i] = True  # Toggle i'th trace to "visible"
@@ -157,8 +153,8 @@ class Model42:
                 sliders=sliders,
                 title=go.layout.Title(text="Sigmoidal Basis Functions", x = 0.5),
                 annotations=[
-                    dict(text="Formula: ϕj(x)=σ(x−μjs) where σ(a)=11+exp(−a)", showarrow= False,
-                         x = 1, y = 1.2, yref = "paper", align = "right"),
+                    dict(text=r'$$\phi(x) = \frac{1}{1 + e^{-\frac{x-\mu}{\sigma}}}$$', showarrow= False, font=dict(size=18),
+                         x = 1, y = 1.2, yref = "paper", align = "left"),
                     
                 ],
             )
@@ -177,7 +173,7 @@ class Model42:
                         go.Scatter(
                             x = np.linspace(0,10,100),
                             y = regression.sin_f(self.data, deg, freq),
-                            name = 'degree ' + str(deg) + ' , ferquency = ' + str(freq) + ' -> RMSE: ' +"%.2f" % self.mse(yhat = regression.sin_f(self.data, deg = deg, ks =freq), y = Y),
+                            name = 'degree ' + str(deg) + ' , frequency = ' + str(freq) + ' -> RMSE: ' +"%.2f" % self.mse(yhat = regression.sin_f(self.data, deg = deg, ks =freq), y = Y),
                             visible = False
                         )
                     )
@@ -228,8 +224,8 @@ class Model42:
                 annotations=[
                     dict(text="Parameters ", showarrow= False,
                          x = -0.5, y = 1.2, yref = "paper", align = "left"),
-                    dict(text="Formula: f(x)=f(x+nk),k∈N", showarrow= False,
-                         x = 1, y = 1.2, yref = "paper", align = "right"),
+                    dict(text="f(x)=f(x+nk),k∈N", showarrow= False, font=dict(size=18),
+                         x = 1, y = 1.15, yref = "paper", align = "left"),
                     
                 ],
                 title=go.layout.Title(text="Periodical Basis Functions", x = 0.5)
@@ -387,7 +383,7 @@ class Model42:
             #add anotation to menu
             self.fig.update_layout(
                 annotations=[
-                    dict(text="Basis function ", showarrow= False,
+                    dict(text="Knots", showarrow= False,
                          x = -0.5, y = 1.2, yref = "paper", align = "left")
                 ],
                 title=go.layout.Title(text="Cubic Spline", x = 0.5)
